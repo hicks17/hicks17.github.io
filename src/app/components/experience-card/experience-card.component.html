@@ -1,0 +1,28 @@
+<mat-card class="experience-card card-surface" appearance="outlined">
+  <mat-card-header>
+    <div mat-card-avatar class="experience-icon">
+      <mat-icon color="primary">work</mat-icon>
+    </div>
+    <mat-card-title class="experience-title">{{ experience.title }}</mat-card-title>
+    <mat-card-subtitle class="experience-company">{{ experience.company }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="experience-metadata">
+      <div class="metadata-item">
+        <mat-icon>calendar_today</mat-icon>
+        <span>{{ experience.period }}</span>
+      </div>
+      <div class="metadata-item">
+        <mat-icon>location_on</mat-icon>
+        <span>{{ experience.location }}</span>
+      </div>
+    </div>
+    <ul class="experience-description-list">
+      @for (desc of experience.descriptions; track $index) {
+        <li class="experience-description-item">
+          {{ desc }}
+        </li>
+      }
+    </ul>
+  </mat-card-content>
+</mat-card>

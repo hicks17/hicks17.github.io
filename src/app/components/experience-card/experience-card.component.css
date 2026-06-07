@@ -1,0 +1,77 @@
+:host {
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.experience-card {
+  border-radius: 16px;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.experience-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--mat-sys-level2-shadow);
+}
+
+.experience-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+  border-radius: 50%;
+}
+
+.experience-title {
+  font-weight: 600;
+  color: inherit;
+}
+
+.experience-company {
+  color: var(--mat-sys-primary);
+  font-weight: 500;
+}
+
+.experience-metadata {
+  display: flex;
+  gap: 16px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+
+.metadata-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: var(--mat-sys-on-surface-variant);
+}
+
+.metadata-item mat-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+}
+
+.experience-description {
+  margin-top: 12px;
+  line-height: 1.6;
+  color: inherit;
+}
+
+.experience-description-list {
+  /* Esto asegura que el punto se muestre. Puedes usar 'disc' (círculo relleno), 'circle' (círculo vacío) o 'square' (cuadrado) */
+  list-style-type: disc;
+
+  /* Es importante darle un padding izquierdo para que el punto no quede fuera del margen de la tarjeta */
+  padding-left: 24px;
+
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.experience-description-item {
+  font-size: 16px;
+  margin-bottom: 8px; /* Espaciado entre cada viñeta para que no se vea amontonado */
+  line-height: 1.5;   /* Mejora la legibilidad del texto */
+}
