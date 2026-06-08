@@ -130,6 +130,26 @@
     display: none;
   }
 
+  .cv-button-text {
+    display: none;
+  }
+
+  .cv-button {
+    min-width: 48px;
+    padding: 0;
+    margin-right: 8px;
+  }
+
+  .logo {
+    margin-right: 8px;
+    font-size: 20px;
+  }
+
+  .main-toolbar {
+    padding: 0 12px;
+    gap: 8px;
+  }
+
   .greeting {
     font-size: 40px;
   }
@@ -201,7 +221,6 @@
   width: 24px;
   height: 24px;
   object-fit: contain;
-  filter: grayscale(1) brightness(0.8);
 }
 
 .dark-theme .contact-icon-img {

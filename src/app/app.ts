@@ -90,13 +90,22 @@ export class App {
 
   projects = signal<Project[]>([
     {
+      title: 'Red Ibai Sinaloa',
+      descriptionEn:
+        'A comprehensive system for a university including a landing page for prospective students, promotion, and panels for teachers, students, and directors. I was in charge of the entire freelance project over 3 months.',
+      descriptionEs:
+        'Un sistema completo para una universidad que incluye landing page para aspirantes y promoción, y paneles para maestros, alumnos y director. Me encargué de todo el proyecto como freelance durante 3 meses.',
+      image: 'assets/images/redibae.png',
+      webUrl: 'https://www.redibaesinaloa.com/',
+      technologies: ['Angular', 'Firebase', 'Hostinger'],
+    },
+    {
       title: 'Recipebook: mi recetario',
       descriptionEn:
         'An app to create, save and search recipes online. Save your own recipes locally or download from thousands of online recipes. 100% Jetpack Compose design.',
       descriptionEs:
         'Una app para crear, guardar y buscar recetas en línea. Guarda localmente tus propias recetas o descarga de entre miles de recetas online. Diseño 100% en Jetpack Compose.',
-      image:
-        'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=1000',
+      image: 'assets/images/recipebook.png',
       playStoreUrl:
         'https://play.google.com/store/apps/details?id=js.apps.recipesapp&pcampaignid=web_share',
       githubUrl: 'https://github.com/hicks17/MyRecipebook.git',
@@ -114,8 +123,7 @@ export class App {
       title: 'Guess The Value',
       descriptionEn: 'A football game that consist in guessing the value of a player',
       descriptionEs: 'Un juego de fútbol que consiste en adivinar el valor de un jugador.',
-      image:
-        'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&q=80&w=1000',
+      image: 'assets/images/guessthevalue.png',
       playStoreUrl:
         'https://play.google.com/store/apps/details?id=js.apps.guessthevalue&pcampaignid=web_share',
       githubUrl: 'https://github.com/hicks17/GuessTV.git',
@@ -125,8 +133,7 @@ export class App {
       title: 'Geo Quiz Mx',
       descriptionEn: 'A quiz of geography in Mexico and the world, with a global ranking of scores',
       descriptionEs: 'Un quiz de geografía en México y el mundo, con un ranking de puntajes global',
-      image:
-        'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&q=80&w=1000',
+      image: 'assets/images/geoquiz.png',
       playStoreUrl:
         'https://play.google.com/store/apps/details?id=app.geoquiz.geoquizmx&pcampaignid=web_share',
       githubUrl: 'https://github.com/hicks17/GeoQuizMX.git',
@@ -175,12 +182,12 @@ export class App {
     {
       name: 'LinkedIn',
       url: 'https://linkedin.com/in/jc-canedo-android',
-      icon: 'https://cdn-icons-png.flaticon.com/512/174/174857.png',
+      icon: 'https://cdn-icons-png.flaticon.com/512/145/145807.png',
       isSvg: true,
     },
   ]);
 
-  isDarkTheme = signal(false);
+  isDarkTheme = signal(window.matchMedia('(prefers-color-scheme: dark)').matches);
   language = signal<'en' | 'es'>('en');
   aboutMeText = computed(() => {
     if (this.language() === 'en') {
@@ -205,6 +212,11 @@ export class App {
   }
 
   constructor() {
+    const darkModeMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+    darkModeMediaQuery.addEventListener('change', (e) => {
+      this.isDarkTheme.set(e.matches);
+    });
+
     effect(() => {
       const mode = this.isDarkTheme() ? 'dark' : 'light';
       document.body.style.colorScheme = mode;
@@ -225,8 +237,15 @@ export class App {
   }
 
   downloadCV() {
-    // Aquí iría la lógica para descargar el CV
-    console.log('Descargando CV...');
-    // window.open('path/to/cv.pdf', '_blank');
+    const fileName = this.language() === 'en' ? 'cv-en.pdf' : 'cv-es.pdf';
+    const filePath = `assets/docs/${fileName}`;
+
+    const link = document.createElement('a');
+    link.href = filePath;
+    link.download = fileName;
+    link.target = '_blank';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 }

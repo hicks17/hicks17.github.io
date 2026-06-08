@@ -11,7 +11,7 @@
 
   <button mat-stroked-button (click)="downloadCV()" class="cv-button">
     <mat-icon>download</mat-icon>
-    {{ language() === 'en' ? 'Download CV' : 'Descargar CV' }}
+    <span class="cv-button-text">{{ language() === 'en' ? 'Download CV' : 'Descargar CV' }}</span>
   </button>
 
   <div class="toggles">
@@ -39,7 +39,7 @@
       {{ language() === 'en' ? 'Passionate about creating amazing mobile experiences.' : 'Apasionado por crear experiencias móviles increíbles.' }}
     </p>
     <div class="hero-actions">
-      <button mat-flat-button color="primary">{{ language() === 'en' ? 'View My Work' : 'Ver mi trabajo' }}</button>
+      <a mat-flat-button color="primary" href="#experience">{{ language() === 'en' ? 'View My Work' : 'Ver mi trabajo' }}</a>
     </div>
 
   <div class="stack-container">
@@ -106,6 +106,12 @@
                   <a mat-flat-button color="secondary" [href]="project.githubUrl" target="_blank">
                     <mat-icon>code</mat-icon>
                     GitHub
+                  </a>
+                }
+                @if (project.webUrl) {
+                  <a mat-flat-button color="secondary" [href]="project.webUrl" target="_blank">
+                    <mat-icon>language</mat-icon>
+                    Web
                   </a>
                 }
               </div>

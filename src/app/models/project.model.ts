@@ -5,5 +5,6 @@ export interface Project {
   image: string;
   playStoreUrl?: string;
   githubUrl?: string;
+  webUrl?: string;
   technologies: string[];
 }
